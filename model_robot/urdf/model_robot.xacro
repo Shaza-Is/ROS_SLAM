@@ -1,20 +1,16 @@
 <?xml version='1.0'?>
 
 <robot name="model_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
-
+  <xacro:include filename="$(find model_robot)/urdf/model_robot.gazebo"/>
   <link name="robot_footprint"></link>
-  <xacro:include filename="$(find model_robot)/urdf/model_robot.gazebo" />
-  <joint name="robot_footprint_joint" type="fixed">
-    <origin xyz="0 0 0" rpy="0 0 0" />
-    <parent link="robot_footprint"/>
-    <child link="chassis" />
-  </joint>
+  
 
+  
   <link name='chassis'>
     <pose>0 0 0.1 0 0 0</pose>
 
     <inertial>
-      <mass value="15.0"/>
+      <mass value="5.0"/>
       <origin xyz="0.0 0 0" rpy=" 0 0 0"/>
       <inertia
           ixx="0.1" ixy="0" ixz="0"
@@ -140,6 +136,16 @@
     </inertial>
   </link>
 
+   <joint name="camera_optical_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="-1.5707 0 -1.5707"/>
+    <parent link="camera"/>
+    <child link="camera_link_optical"/>
+  </joint>
+
+  <link name="camera_link_optical">
+  </link>
+ 
+
   <link name="hokuyo">
     <visual>
       <origin xyz="0.0 0 0" rpy=" 0 0 0"/>
@@ -165,6 +171,11 @@
   </link>
 
   <!--Joints-->
+  <joint name="robot_footprint_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="robot_footprint"/>
+    <child link="chassis" />
+  </joint>
 
   <joint type="fixed" name="hokuyo_joint">
     <origin xyz="0.15 0 0.09" rpy="0 0 0"/>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+    <!-- The drive_robot node -->
+  <node name="process_motion" type="process_motion" pkg="robot_mover" output="screen">
+  </node>
+
+</launch>

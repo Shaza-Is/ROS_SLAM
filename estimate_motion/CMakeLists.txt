@@ -167,6 +167,7 @@ include_directories(
 catkin_install_python(PROGRAMS 
   scripts/imu_listener.py
   scripts/velodyne_listener.py
+  scripts/req_motion.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

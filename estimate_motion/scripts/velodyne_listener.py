@@ -9,6 +9,7 @@ import pcl
 
 def callback(data):
     rospy.loginfo("I heard %s", data)
+    pc = pc2.read_points(data, skip_nans=True, field_names=("x", "y", "z"))
     
 def velodyne_listener():
 

@@ -15,7 +15,7 @@
 
 
   <!-- World File -->
-  <arg name="world_file" default="$(find model_robot)/worlds/furnished_building_world.world"/>
+  <arg name="world_file" default="$(find model_robot)/worlds/furnished_small_building_world.world"/>
 
   <!-- Launch Gazebo World -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -34,10 +34,8 @@
               -x $(arg x) -y $(arg y) -z $(arg z)
               -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)"/>
 <!--launch rviz-->
-<node name="rviz" pkg="rviz" type="rviz" respawn="false"/>
-
+  <node name="rviz" pkg="rviz" type="rviz" respawn="false"/>
 <!-- The drive_robot node -->
   <node name="drive_robot" type="drive_robot" pkg="robot_mover" output="screen">
   </node>
-
 </launch>

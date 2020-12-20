@@ -158,6 +158,9 @@
         <origin xyz="0 0 -0.0377" />
         <geometry>
           <mesh filename="package://velodyne_description/meshes/VLP16_scan.dae" />
+          <!--Could be better for visualization <mesh filename="package://velodyne_description/meshes/VLP16_base_1.dae" />
+          <mesh filename="package://velodyne_description/meshes/VLP16_scan.dae" />
+          <mesh filename="package://velodyne_description/meshes/VLP16_base_2.dae" /> -->
         </geometry>
       </visual>
     </link>
@@ -219,7 +222,7 @@
   <gazebo reference="chassis">
     <material>Gazebo/Blue</material>
   </gazebo>
-
+  
   <gazebo reference="camera">
     <material>Gazebo/Black</material>
   </gazebo>

@@ -25,7 +25,7 @@ std::vector<double> unicycle(std::vector<double>u, std::vector<double>q, double 
     double new_x = q[0] + T*u[0]*std::cos(q[2]);
     double new_y = q[1] + T*u[0]*std::sin(q[2]);
     double new_theta = q[2] + T*u[1];
-    std::vector<double> new_q{new_x, new_y, new_theta}; //= np.array([new_x, new_y, new_theta])
+    std::vector<double> new_q{new_x, new_y, new_theta}; 
     return new_q;
 }
 
@@ -40,8 +40,7 @@ int main(int argc, char** argv)
     std::vector<double> q{0, 0, 0};
     std::vector<double> u{0, 0};
     std::vector<double> new_q = unicycle(u,q);
-    //for (std::vector<double>::const_iterator i = new_q.begin(); i != new_q.end(); ++i)
-    //    ROS_INFO_STREAM( << *i << ' ');
+    
     ROS_INFO_STREAM("new_q:" <<  new_q[0] << new_q[1]<< new_q[2]);
 
     
@@ -56,13 +55,16 @@ int main(int argc, char** argv)
     while (ros::ok())
     {
         i++;
-        if(i % 3 !=0)
-            u = std::vector<double>{0.5, 0.1};
-        else
-        {
-            u = std::vector<double>{0.0, 0.5};
+        if(i < 5000 or i > 5100 ){
+            if(i % 4 !=0)
+                u = std::vector<double>{0.5, 0.0};
+            else
+            {
+                u = std::vector<double>{0.1, -1.5};
+            }
+        }else{
+            u = std::vector<double>{0.5, 0.0};
         }
-        
         drive_robot(u[0], u[1]);
         new_q = unicycle(u,new_q);
         ROS_INFO_STREAM("new_q:" <<  new_q[0] << new_q[1]<< new_q[2]);

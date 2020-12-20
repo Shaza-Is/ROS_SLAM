@@ -589,15 +589,15 @@
       <static>1</static>
     </model>
     <state world_name='default'>
-      <sim_time>190 532000000</sim_time>
-      <real_time>146 238771357</real_time>
-      <wall_time>1608419843 265058158</wall_time>
-      <iterations>145957</iterations>
+      <sim_time>332 19000000</sim_time>
+      <real_time>141 722451904</real_time>
+      <wall_time>1608422073 97282683</wall_time>
+      <iterations>141487</iterations>
       <model name='brick_box_3x1x3'>
-        <pose frame=''>7.74809 -3.99525 0 0 -0 0</pose>
+        <pose frame=''>8.67411 -3.71031 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='chassis'>
-          <pose frame=''>7.74809 -3.99525 1.5 0 -0 0</pose>
+          <pose frame=''>8.67411 -3.71031 1.5 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -614,13 +614,33 @@
         </link>
       </model>
       <model name='cube_20k'>
-        <pose frame=''>7.77551 -8.88413 0 0 1e-06 -4e-06</pose>
+        <pose frame=''>8.04987 -8.37031 0.5 -0 1e-06 0.0039</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>7.77551 -8.88413 0.5 0 1e-06 -4e-06</pose>
+          <pose frame=''>8.04987 -8.37031 1 -0 1e-06 0.0039</pose>
           <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>1.07556 0.03427 -0.19878 3.07095 0.991638 3.13739</acceleration>
-          <wrench>1.07556 0.03427 -0.19878 0 -0 0</wrench>
+          <acceleration>2.61555 0.063294 -0.499701 3.07842 0.526326 3.14122</acceleration>
+          <wrench>2.61555 0.063294 -0.499701 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='fire_hydrant'>
+        <pose frame=''>-2.82552 -3.47804 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>-2.82552 -3.47804 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='fountain'>
+        <pose frame=''>1.47286 -3.32939 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>1.47286 -3.32939 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='ground_plane'>
@@ -749,7 +769,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
         <link name='cylinder'>
-          <pose frame=''>-8.04111 -5.67445 0.499992 -1e-06 0 0</pose>
+          <pose frame=''>-8.04111 -5.67445 0.499992 -1e-06 1e-06 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 -9.8 0 -0 0</acceleration>
           <wrench>0 0 -9.8 0 -0 0</wrench>
@@ -767,7 +787,7 @@
     </state>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose frame=''>22.9456 1.88668 31.915 0 0.867644 3.04019</pose>
+        <pose frame=''>18.148 -1.59583 18.5569 0 0.867644 3.04019</pose>
         <view_controller>orbit</view_controller>
         <projection_type>perspective</projection_type>
       </camera>
@@ -1174,6 +1194,82 @@
         <gravity>1</gravity>
       </link>
       <pose frame=''>7.74809 -3.99525 0 0 -0 0</pose>
+    </model>
+    <model name='fire_hydrant'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>model://fire_hydrant/meshes/fire_hydrant.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://fire_hydrant/meshes/fire_hydrant.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose frame=''>-2.82552 -3.47804 0 0 -0 0</pose>
+    </model>
+    <model name='fountain'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>model://fountain/meshes/fountain.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://fountain/meshes/fountain.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose frame=''>1.47286 -3.32939 0 0 -0 0</pose>
     </model>
   </world>
 </sdf>

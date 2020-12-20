@@ -36,4 +36,8 @@
 <!--launch rviz-->
 <node name="rviz" pkg="rviz" type="rviz" respawn="false"/>
 
+<!-- The drive_robot node -->
+  <node name="drive_robot" type="drive_robot" pkg="robot_mover" output="screen">
+  </node>
+
 </launch>

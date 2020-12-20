@@ -81,7 +81,7 @@
         </camera>
          <plugin name="camera_controller" filename="libgazebo_ros_openni_kinect.so">
             <alwaysOn>true</alwaysOn>
-            <updateRate>10.0</updateRate>
+            <updateRate>20.0</updateRate>
             <cameraName>camera</cameraName>
             <frameName>camera_link_optical</frameName>                   
             <imageTopicName>rgb/image_raw</imageTopicName>
@@ -105,46 +105,58 @@
   </gazebo>
 
 <!-- Gazebo requires the velodyne_gazebo_plugins package -->
-    <gazebo reference="lidar">
-      <sensor type="ray" name="lidar-VLP16">
-        <pose>0 0 0 0 0 0</pose>
-        <visualize>false</visualize>
-        <update_rate>10</update_rate>
-        <ray>
-          <scan>
-            <horizontal>
-              <samples>1875</samples>
-              <resolution>1</resolution>
-              <min_angle>-3.1415926535897931</min_angle>
-              <max_angle>3.1415926535897931</max_angle>
-            </horizontal>
-            <vertical>
-              <samples>16</samples>
-              <resolution>1</resolution>
-              <min_angle>-${15.0*3.1415926535897931/180.0}</min_angle>
-              <max_angle> ${15.0*3.1415926535897931/180.0}</max_angle>
-            </vertical>
-          </scan>
-          <range>
-            <min>0.3</min>
-            <max>131.0</max>
-            <resolution>0.001</resolution>
-          </range>
-          <noise>
-            <type>gaussian</type>
-            <mean>0.0</mean>
-            <stddev>0.0</stddev>
-          </noise>
-        </ray>
-        <plugin name="gazebo_ros_laser_controller" filename="libgazebo_ros_velodyne_laser.so">
-	  <topicName>/velodyne_points</topicName>
-	  <frameName>/lidar</frameName>
-          <min_range>0.9</min_range>
-          <max_range>130.0</max_range>
-          <gaussianNoise>0.008</gaussianNoise>
-        </plugin>
-      </sensor>
-    </gazebo>
+  <gazebo reference="lidar">
+    <sensor type="ray" name="lidar-VLP16">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>false</visualize>
+      <update_rate>10</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>1875</samples>
+            <resolution>1</resolution>
+            <min_angle>-3.1415926535897931</min_angle>
+            <max_angle>3.1415926535897931</max_angle>
+          </horizontal>
+          <vertical>
+            <samples>16</samples>
+            <resolution>1</resolution>
+            <min_angle>-${15.0*3.1415926535897931/180.0}</min_angle>
+            <max_angle> ${15.0*3.1415926535897931/180.0}</max_angle>
+          </vertical>
+        </scan>
+        <range>
+          <min>0.3</min>
+          <max>131.0</max>
+          <resolution>0.001</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.0</stddev>
+        </noise>
+      </ray>
+      <plugin name="gazebo_ros_laser_controller" filename="libgazebo_ros_velodyne_laser.so">
+	<topicName>/velodyne_points</topicName>
+	<frameName>/lidar</frameName>
+        <min_range>0.9</min_range>
+        <max_range>130.0</max_range>
+        <gaussianNoise>0.008</gaussianNoise>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+
+    <gazebo>
+    <plugin name="imu_plugin" filename="libgazebo_ros_imu.so">
+      <alwaysOn>true</alwaysOn>
+      <bodyName>robot_footprint</bodyName>
+      <topicName>imu</topicName>
+      <serviceName>imu_service</serviceName>
+      <gaussianNoise>0.0</gaussianNoise>
+      <updateRate>20.0</updateRate>
+    </plugin>
+  </gazebo>
 
   
 
